@@ -1,6 +1,6 @@
 {
   "name": "reader",
-  "description": "Create simple markdown readme for your project",
+  "description": "Module to create simple markdown readme for a project",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Pablo Varela <pablovarela182@gmail.com>",
