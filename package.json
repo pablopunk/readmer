@@ -1,5 +1,5 @@
 {
-  "name": "reader",
+  "name": "readmer",
   "description": "Module to create simple markdown readme for a project",
   "version": "1.0.0",
   "main": "index.js",
