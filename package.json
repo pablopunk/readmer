@@ -1,0 +1,14 @@
+{
+  "name": "reader",
+  "description": "Create simple markdown readme for your project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Pablo Varela <pablovarela182@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "ava"
+  },
+  "devDependencies": {
+    "ava": "^0.19.1"
+  }
+}
