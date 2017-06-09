@@ -39,7 +39,10 @@ npm install readmer
 
 ```javascript
 readmer(
-  'package.json' // path to package.json
+  'package.json', // path to package.json
+  { // optional
+    gravatarEmail: 'Email to retrieve gravatar image'
+  }
 )
 ```
 
