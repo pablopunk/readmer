@@ -1,7 +1,8 @@
 const path = require('path')
 const fs = require('fs')
+const gravatar = require('gravatar')
 
-const getMarkdown = async ({name, description, author, license, licenseFile}) => {
+const getMarkdown = async ({name, description, author, imageUrl, license, licenseFile}) => {
   let licenseMarkdown = ''
   if (licenseFile) {
     licenseMarkdown = `
@@ -42,10 +43,17 @@ ${licenseMarkdown}
 
 ## Author
 
-| ![me](https://www.lightstim.com/images/pro/icon-youraccount.jpg) |
+| ![me](http:${imageUrl}) |
 | ----------------------------------------------------------------------------- |
 | © 2017 [__${author}__]() |
 `
+}
+
+const defaultImage = '//www.lightstim.com/images/pro/icon-youraccount.jpg'
+
+const getImageUrl = email => {
+  const image = gravatar.url(email, {s: 200})
+  return image || defaultImage
 }
 
 const getFilePath = file => {
@@ -68,7 +76,7 @@ const doesItHaveALicenseFile = folder => {
   return match || false
 }
 
-module.exports = async (pkgJson = './package.json') => {
+module.exports = async (pkgJson = './package.json', {gravatarEmail} = {gravatarEmail: null}) => {
   const pkg = require(`${pkgJson}`)
   if (!pkg) {
     throw Error(`${pkgJson} not found`)
@@ -79,10 +87,11 @@ module.exports = async (pkgJson = './package.json') => {
   const description = pkg.description || 'Introduce your software here'
   const author = pkg.author || 'Your Name'
   const license = pkg.license || ''
+  const imageUrl = gravatarEmail ? getImageUrl(gravatarEmail) : defaultImage
   let licenseFile
   if (license) {
     licenseFile = doesItHaveALicenseFile(folder)
   }
-  const output = await getMarkdown({name, description, author, license, licenseFile})
+  const output = await getMarkdown({name, description, author, license, licenseFile, imageUrl})
   return output
 }

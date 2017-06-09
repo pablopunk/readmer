@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/pablopunk/reamder/issues"
   },
-  "homepage": "https://github.com/pablopunk/reamder#readme"
+  "homepage": "https://github.com/pablopunk/reamder#readme",
+  "dependencies": {
+    "gravatar": "^1.6.0"
+  }
 }
