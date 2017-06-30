@@ -56,20 +56,15 @@ const getImageUrl = email => {
   return image || defaultImage
 }
 
-const getFilePath = file => {
-  let filePath = file.split('/')
-  filePath.pop()
-  filePath = filePath.join(filePath)
-  return filePath
-}
+const getFilePath = path.dirname
 
 const isThereALicenseFile = folder => {
   const possibleFiles = ['license', 'LICENSE', 'License', 'license.md', 'LICENSE.md', 'License.md', 'license.txt', 'LICENSE.txt', 'License.txt']
   let match
   possibleFiles.some(file => {
-    const fileName = path.join(folder, file)
-    if (fs.existsSync(fileName)) {
-      match = fileName
+    const filePath = path.join(folder, file)
+    if (fs.existsSync(filePath)) {
+      match = file
       return true
     }
   })
