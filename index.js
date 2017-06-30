@@ -63,7 +63,7 @@ const getFilePath = file => {
   return filePath
 }
 
-const doesItHaveALicenseFile = folder => {
+const isThereALicenseFile = folder => {
   const possibleFiles = ['license', 'LICENSE', 'License', 'license.md', 'LICENSE.md', 'License.md', 'license.txt', 'LICENSE.txt', 'License.txt']
   let match
   possibleFiles.some(file => {
@@ -90,7 +90,7 @@ module.exports = async (pkgJson = './package.json', {gravatarEmail} = {gravatarE
   const imageUrl = gravatarEmail ? getImageUrl(gravatarEmail) : defaultImage
   let licenseFile
   if (license) {
-    licenseFile = doesItHaveALicenseFile(folder)
+    licenseFile = isThereALicenseFile(folder)
   }
   const output = await getMarkdown({name, description, author, license, licenseFile, imageUrl})
   return output
