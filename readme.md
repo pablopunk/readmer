@@ -53,6 +53,8 @@ Feel free to open an _issue_ or a _PR_.
 ## Related
 
 CLI for this module => [readmer-cli](https://github.com/pablopunk/readmer-cli)
+Minimal node boilerplate => [miny](https://github.com/pablopunk/miny)
+
 
 ## Author
 
